@@ -8,44 +8,48 @@
   <script src="https://tapi.bale.ai/miniapp.js?3"></script>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Tahoma, Arial, sans-serif;
-      background: #f5f7fa;
+      background: #f4f6f8;
       color: #222;
     }
 
     .container {
       max-width: 600px;
       margin: auto;
-      padding: 20px;
+      padding: 18px;
     }
 
     .header {
       text-align: center;
-      padding: 20px 0;
+      padding: 18px 10px 25px;
     }
 
     .logo {
-      font-size: 48px;
+      font-size: 52px;
+      margin-bottom: 8px;
     }
 
-    h1 {
-      margin: 8px 0;
+    .header h1 {
+      margin: 0;
+      font-size: 25px;
     }
 
-    .subtitle {
+    .header p {
       color: #777;
+      margin-top: 8px;
+      font-size: 14px;
     }
 
-    .search {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      font-size: 16px;
-      margin-bottom: 20px;
+    .section-title {
+      font-size: 17px;
+      font-weight: bold;
+      margin: 20px 0 12px;
     }
 
     .grid {
@@ -54,49 +58,89 @@
       gap: 12px;
     }
 
-    .item {
+    .card {
       background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 15px;
-      padding: 20px 10px;
+      border: 1px solid #e2e5e8;
+      border-radius: 16px;
+      padding: 20px 12px;
       text-align: center;
       cursor: pointer;
+      transition: 0.2s;
     }
 
-    .item:hover {
-      background: #f0f7ff;
+    .card:active {
+      transform: scale(0.97);
     }
 
-    .icon {
-      font-size: 30px;
+    .card .icon {
+      font-size: 34px;
+      margin-bottom: 10px;
     }
 
-    .title {
-      margin-top: 8px;
+    .card .title {
+      font-size: 16px;
       font-weight: bold;
     }
 
-    .categories {
-      margin-top: 25px;
+    .card .description {
+      font-size: 12px;
+      color: #777;
+      margin-top: 7px;
     }
 
-    .category {
-      display: inline-block;
+    .points-buy {
+      border-right: 4px solid #168a45;
+    }
+
+    .points-sell {
+      border-right: 4px solid #d9534f;
+    }
+
+    .goods-buy {
+      border-right: 4px solid #2878d0;
+    }
+
+    .goods-sell {
+      border-right: 4px solid #e29b18;
+    }
+
+    .bottom-menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .bottom-item {
       background: white;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      padding: 10px 14px;
-      margin: 4px;
+      border: 1px solid #e2e5e8;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
       cursor: pointer;
     }
 
-    #message {
+    .bottom-item .icon {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .message {
       margin-top: 20px;
-      padding: 15px;
-      background: #eaf4ff;
+      padding: 14px;
+      background: #e9f2ff;
       border-radius: 12px;
       text-align: center;
-      color: #225;
+      font-size: 13px;
+      color: #245;
+    }
+
+    .footer {
+      text-align: center;
+      color: #999;
+      font-size: 11px;
+      margin-top: 25px;
+      padding-bottom: 10px;
     }
   </style>
 </head>
@@ -106,92 +150,94 @@
 <div class="container">
 
   <div class="header">
-    <div class="logo">🛍️</div>
+    <div class="logo">💳</div>
     <h1>رسالت‌فی</h1>
-    <div class="subtitle">سامانه خرید و فروش</div>
+    <p>سامانه خرید و فروش امتیاز و کالا</p>
   </div>
 
-  <input
-    class="search"
-    type="text"
-    placeholder="🔎 جستجوی کالا یا خدمت..."
-    id="search"
-  >
+
+  <div class="section-title">
+    💳 خرید و فروش امتیاز
+  </div>
 
   <div class="grid">
 
-    <div class="item" onclick="showMessage('خرید')">
+    <div class="card points-buy" onclick="openSection('خرید امتیاز')">
+      <div class="icon">🟢</div>
+      <div class="title">خرید امتیاز</div>
+      <div class="description">مشاهده امتیازهای قابل خرید</div>
+    </div>
+
+    <div class="card points-sell" onclick="openSection('فروش امتیاز')">
+      <div class="icon">🔴</div>
+      <div class="title">فروش امتیاز</div>
+      <div class="description">ثبت آگهی فروش امتیاز</div>
+    </div>
+
+  </div>
+
+
+  <div class="section-title">
+    🛍️ خرید و فروش کالا
+  </div>
+
+  <div class="grid">
+
+    <div class="card goods-buy" onclick="openSection('خرید کالا')">
       <div class="icon">🛒</div>
-      <div class="title">خرید</div>
-      <div>مشاهده کالاها</div>
+      <div class="title">خرید کالا</div>
+      <div class="description">مشاهده کالاهای قابل فروش</div>
     </div>
 
-    <div class="item" onclick="showMessage('ثبت آگهی')">
+    <div class="card goods-sell" onclick="openSection('فروش کالا')">
       <div class="icon">➕</div>
-      <div class="title">ثبت آگهی</div>
-      <div>فروش کالا</div>
+      <div class="title">فروش کالا</div>
+      <div class="description">ثبت آگهی فروش کالا</div>
     </div>
 
-    <div class="item" onclick="showMessage('آگهی‌های من')">
+  </div>
+
+
+  <div class="section-title">
+    👤 پنل کاربری
+  </div>
+
+  <div class="bottom-menu">
+
+    <div class="bottom-item" onclick="openSection('آگهی‌های من')">
       <div class="icon">📋</div>
-      <div class="title">آگهی‌های من</div>
-      <div>مدیریت آگهی‌ها</div>
+      <div>آگهی‌های من</div>
     </div>
 
-    <div class="item" onclick="showMessage('حساب کاربری')">
+    <div class="bottom-item" onclick="openSection('حساب کاربری')">
       <div class="icon">👤</div>
-      <div class="title">حساب کاربری</div>
-      <div>پروفایل من</div>
+      <div>حساب کاربری</div>
     </div>
 
   </div>
 
-  <div class="categories">
-    <h3>دسته‌بندی‌ها</h3>
 
-    <span class="category" onclick="selectCategory('موبایل')">
-      📱 موبایل
-    </span>
-
-    <span class="category" onclick="selectCategory('کامپیوتر')">
-      💻 کامپیوتر
-    </span>
-
-    <span class="category" onclick="selectCategory('خودرو')">
-      🚗 خودرو
-    </span>
-
-    <span class="category" onclick="selectCategory('لوازم منزل')">
-      🏠 لوازم منزل
-    </span>
-
-    <span class="category" onclick="selectCategory('پوشاک')">
-      👕 پوشاک
-    </span>
-
+  <div id="message" class="message">
+    یکی از بخش‌های بالا را انتخاب کنید.
   </div>
 
-  <div id="message">
-    نسخه آزمایشی رسالت‌فی
+
+  <div class="footer">
+    رسالت‌فی | نسخه آزمایشی
   </div>
 
 </div>
 
+
 <script>
 
-  function showMessage(name) {
-    document.getElementById("message").innerText =
-      "بخش «" + name + "» در مرحله بعد فعال می‌شود.";
-  }
-
-  function selectCategory(name) {
-    document.getElementById("search").value = name;
+  function openSection(section) {
 
     document.getElementById("message").innerText =
-      "دسته «" + name + "» انتخاب شد.";
+      "بخش «" + section + "» در مرحله بعد فعال می‌شود.";
+
   }
 
-  // آماده‌سازی Mini App بله
   if (window.Bale && Bale.WebApp) {
     Bale.WebApp.ready();
   }
