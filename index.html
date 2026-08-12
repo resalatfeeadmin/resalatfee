@@ -31,25 +31,22 @@
     }
 
     .logo {
-      font-size: 52px;
-      margin-bottom: 8px;
+      font-size: 50px;
     }
 
-    .header h1 {
-      margin: 0;
-      font-size: 25px;
+    h1 {
+      margin: 8px 0;
     }
 
-    .header p {
+    .subtitle {
       color: #777;
-      margin-top: 8px;
       font-size: 14px;
     }
 
     .section-title {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: bold;
-      margin: 20px 0 12px;
+      margin: 18px 0 14px;
     }
 
     .grid {
@@ -60,31 +57,30 @@
 
     .card {
       background: white;
-      border: 1px solid #e2e5e8;
+      border: 1px solid #ddd;
       border-radius: 16px;
-      padding: 20px 12px;
+      padding: 20px 10px;
       text-align: center;
       cursor: pointer;
-      transition: 0.2s;
     }
 
     .card:active {
-      transform: scale(0.97);
+      transform: scale(.97);
     }
 
-    .card .icon {
+    .icon {
       font-size: 34px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .card .title {
-      font-size: 16px;
+    .title {
       font-weight: bold;
+      font-size: 16px;
     }
 
-    .card .description {
-      font-size: 12px;
+    .description {
       color: #777;
+      font-size: 12px;
       margin-top: 7px;
     }
 
@@ -108,31 +104,96 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 12px;
     }
 
     .bottom-item {
       background: white;
-      border: 1px solid #e2e5e8;
+      border: 1px solid #ddd;
       border-radius: 14px;
       padding: 16px;
       text-align: center;
       cursor: pointer;
     }
 
-    .bottom-item .icon {
-      font-size: 26px;
-      margin-bottom: 6px;
+    .amount-page {
+      display: none;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 10px 15px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .amount-box {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid #ddd;
+    }
+
+    .amount-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .amount-button {
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 14px;
+      padding: 17px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .amount-button:active {
+      transform: scale(.97);
+    }
+
+    .amount-button.selected {
+      border-color: #168a45;
+      background: #eef9f2;
+    }
+
+    .free-input {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .free-input input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .continue {
+      width: 100%;
+      margin-top: 18px;
+      padding: 15px;
+      border: none;
+      border-radius: 13px;
+      background: #168a45;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .message {
-      margin-top: 20px;
-      padding: 14px;
+      margin-top: 18px;
+      padding: 13px;
       background: #e9f2ff;
       border-radius: 12px;
       text-align: center;
       font-size: 13px;
-      color: #245;
     }
 
     .footer {
@@ -140,7 +201,6 @@
       color: #999;
       font-size: 11px;
       margin-top: 25px;
-      padding-bottom: 10px;
     }
   </style>
 </head>
@@ -149,76 +209,160 @@
 
 <div class="container">
 
-  <div class="header">
-    <div class="logo">💳</div>
-    <h1>رسالت‌فی</h1>
-    <p>سامانه خرید و فروش امتیاز و کالا</p>
-  </div>
+  <!-- صفحه اصلی -->
+  <div id="homePage">
 
-
-  <div class="section-title">
-    💳 خرید و فروش امتیاز
-  </div>
-
-  <div class="grid">
-
-    <div class="card points-buy" onclick="openSection('خرید امتیاز')">
-      <div class="icon">🟢</div>
-      <div class="title">خرید امتیاز</div>
-      <div class="description">مشاهده امتیازهای قابل خرید</div>
+    <div class="header">
+      <div class="logo">💳</div>
+      <h1>رسالت‌فی</h1>
+      <div class="subtitle">
+        سامانه خرید و فروش امتیاز و کالا
+      </div>
     </div>
 
-    <div class="card points-sell" onclick="openSection('فروش امتیاز')">
-      <div class="icon">🔴</div>
-      <div class="title">فروش امتیاز</div>
-      <div class="description">ثبت آگهی فروش امتیاز</div>
+    <div class="section-title">
+      💳 خرید و فروش امتیاز
+    </div>
+
+    <div class="grid">
+
+      <div class="card points-buy" onclick="openSection('خرید امتیاز')">
+        <div class="icon">🟢</div>
+        <div class="title">خرید امتیاز</div>
+        <div class="description">
+          مشاهده امتیازهای قابل خرید
+        </div>
+      </div>
+
+      <div class="card points-sell" onclick="showSellPage()">
+        <div class="icon">🔴</div>
+        <div class="title">فروش امتیاز</div>
+        <div class="description">
+          ثبت آگهی فروش امتیاز
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-title">
+      🛍️ خرید و فروش کالا
+    </div>
+
+    <div class="grid">
+
+      <div class="card goods-buy" onclick="openSection('خرید کالا')">
+        <div class="icon">🛒</div>
+        <div class="title">خرید کالا</div>
+        <div class="description">
+          مشاهده کالاهای قابل فروش
+        </div>
+      </div>
+
+      <div class="card goods-sell" onclick="openSection('فروش کالا')">
+        <div class="icon">➕</div>
+        <div class="title">فروش کالا</div>
+        <div class="description">
+          ثبت آگهی فروش کالا
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-title">
+      👤 پنل کاربری
+    </div>
+
+    <div class="bottom-menu">
+
+      <div class="bottom-item" onclick="openSection('آگهی‌های من')">
+        📋<br>
+        آگهی‌های من
+      </div>
+
+      <div class="bottom-item" onclick="openSection('حساب کاربری')">
+        👤<br>
+        حساب کاربری
+      </div>
+
+    </div>
+
+    <div id="message" class="message">
+      یکی از بخش‌های بالا را انتخاب کنید.
     </div>
 
   </div>
 
 
-  <div class="section-title">
-    🛍️ خرید و فروش کالا
-  </div>
+  <!-- صفحه فروش امتیاز -->
+  <div id="sellPage" class="amount-page">
 
-  <div class="grid">
-
-    <div class="card goods-buy" onclick="openSection('خرید کالا')">
-      <div class="icon">🛒</div>
-      <div class="title">خرید کالا</div>
-      <div class="description">مشاهده کالاهای قابل فروش</div>
+    <div class="back" onclick="goHome()">
+      ← بازگشت
     </div>
 
-    <div class="card goods-sell" onclick="openSection('فروش کالا')">
-      <div class="icon">➕</div>
-      <div class="title">فروش کالا</div>
-      <div class="description">ثبت آگهی فروش کالا</div>
+    <div class="header">
+      <div class="logo">🔴</div>
+      <h1>فروش امتیاز</h1>
+      <div class="subtitle">
+        ابتدا میزان امتیاز موردنظر را انتخاب کنید
+      </div>
     </div>
 
-  </div>
+    <div class="amount-box">
 
+      <div class="section-title">
+        💳 مبلغ امتیاز
+      </div>
 
-  <div class="section-title">
-    👤 پنل کاربری
-  </div>
+      <div class="amount-grid">
 
-  <div class="bottom-menu">
+        <button class="amount-button" onclick="selectAmount(5, this)">
+          ۵ میلیون
+        </button>
 
-    <div class="bottom-item" onclick="openSection('آگهی‌های من')">
-      <div class="icon">📋</div>
-      <div>آگهی‌های من</div>
+        <button class="amount-button" onclick="selectAmount(10, this)">
+          ۱۰ میلیون
+        </button>
+
+        <button class="amount-button" onclick="selectAmount(20, this)">
+          ۲۰ میلیون
+        </button>
+
+        <button class="amount-button" onclick="selectAmount(50, this)">
+          ۵۰ میلیون
+        </button>
+
+        <button class="amount-button" onclick="selectAmount(100, this)">
+          ۱۰۰ میلیون
+        </button>
+
+        <button class="amount-button" onclick="showFreeAmount(this)">
+          مقدار آزاد
+        </button>
+
+      </div>
+
+      <div id="freeInput" class="free-input">
+
+        <input
+          type="number"
+          id="customAmount"
+          placeholder="مبلغ را به میلیون تومان وارد کنید"
+          min="1"
+        >
+
+      </div>
+
+      <button class="continue" onclick="continueAmount()">
+        ادامه ➜
+      </button>
+
     </div>
 
-    <div class="bottom-item" onclick="openSection('حساب کاربری')">
-      <div class="icon">👤</div>
-      <div>حساب کاربری</div>
+    <div id="amountMessage" class="message">
+      لطفاً مبلغ امتیاز را انتخاب کنید.
     </div>
 
-  </div>
-
-
-  <div id="message" class="message">
-    یکی از بخش‌های بالا را انتخاب کنید.
   </div>
 
 
@@ -231,6 +375,108 @@
 
 <script>
 
+  let selectedAmount = null;
+
+  function showSellPage() {
+
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("sellPage").style.display = "block";
+
+  }
+
+
+  function goHome() {
+
+    document.getElementById("sellPage").style.display = "none";
+    document.getElementById("homePage").style.display = "block";
+
+  }
+
+
+  function selectAmount(amount, button) {
+
+    selectedAmount = amount;
+
+    document
+      .querySelectorAll(".amount-button")
+      .forEach(function(btn) {
+        btn.classList.remove("selected");
+      });
+
+    button.classList.add("selected");
+
+    document.getElementById("freeInput").style.display = "none";
+
+    document.getElementById("amountMessage").innerText =
+      "مبلغ انتخاب‌شده: " + amount + " میلیون تومان";
+
+  }
+
+
+  function showFreeAmount(button) {
+
+    selectedAmount = null;
+
+    document
+      .querySelectorAll(".amount-button")
+      .forEach(function(btn) {
+        btn.classList.remove("selected");
+      });
+
+    button.classList.add("selected");
+
+    document.getElementById("freeInput").style.display = "block";
+
+    document.getElementById("customAmount").focus();
+
+    document.getElementById("amountMessage").innerText =
+      "مبلغ دلخواه خود را وارد کنید.";
+
+  }
+
+
+  function continueAmount() {
+
+    let customInput =
+      document.getElementById("customAmount");
+
+    if (
+      document.getElementById("freeInput").style.display === "block"
+    ) {
+
+      let value = Number(customInput.value);
+
+      if (!value || value <= 0) {
+
+        document.getElementById("amountMessage").innerText =
+          "لطفاً مبلغ معتبر وارد کنید.";
+
+        return;
+      }
+
+      selectedAmount = value;
+
+    }
+
+
+    if (!selectedAmount) {
+
+      document.getElementById("amountMessage").innerText =
+        "لطفاً ابتدا مبلغ امتیاز را انتخاب کنید.";
+
+      return;
+
+    }
+
+
+    document.getElementById("amountMessage").innerText =
+      "مبلغ " +
+      selectedAmount +
+      " میلیون تومان انتخاب شد. مرحله بعدی در حال آماده‌سازی است.";
+
+  }
+
+
   function openSection(section) {
 
     document.getElementById("message").innerText =
@@ -238,8 +484,11 @@
 
   }
 
+
   if (window.Bale && Bale.WebApp) {
+
     Bale.WebApp.ready();
+
   }
 
 </script>
