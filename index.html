@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسالت‌فی</title>
+
+  <script src="https://tapi.bale.ai/miniapp.js?3"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 48px;
+    }
+
+    h1 {
+      margin: 8px 0;
+    }
+
+    .subtitle {
+      color: #777;
+    }
+
+    .search {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .item {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 15px;
+      padding: 20px 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .item:hover {
+      background: #f0f7ff;
+    }
+
+    .icon {
+      font-size: 30px;
+    }
+
+    .title {
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .categories {
+      margin-top: 25px;
+    }
+
+    .category {
+      display: inline-block;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 10px 14px;
+      margin: 4px;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eaf4ff;
+      border-radius: 12px;
+      text-align: center;
+      color: #225;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="logo">🛍️</div>
+    <h1>رسالت‌فی</h1>
+    <div class="subtitle">سامانه خرید و فروش</div>
+  </div>
+
+  <input
+    class="search"
+    type="text"
+    placeholder="🔎 جستجوی کالا یا خدمت..."
+    id="search"
+  >
+
+  <div class="grid">
+
+    <div class="item" onclick="showMessage('خرید')">
+      <div class="icon">🛒</div>
+      <div class="title">خرید</div>
+      <div>مشاهده کالاها</div>
+    </div>
+
+    <div class="item" onclick="showMessage('ثبت آگهی')">
+      <div class="icon">➕</div>
+      <div class="title">ثبت آگهی</div>
+      <div>فروش کالا</div>
+    </div>
+
+    <div class="item" onclick="showMessage('آگهی‌های من')">
+      <div class="icon">📋</div>
+      <div class="title">آگهی‌های من</div>
+      <div>مدیریت آگهی‌ها</div>
+    </div>
+
+    <div class="item" onclick="showMessage('حساب کاربری')">
+      <div class="icon">👤</div>
+      <div class="title">حساب کاربری</div>
+      <div>پروفایل من</div>
+    </div>
+
+  </div>
+
+  <div class="categories">
+    <h3>دسته‌بندی‌ها</h3>
+
+    <span class="category" onclick="selectCategory('موبایل')">
+      📱 موبایل
+    </span>
+
+    <span class="category" onclick="selectCategory('کامپیوتر')">
+      💻 کامپیوتر
+    </span>
+
+    <span class="category" onclick="selectCategory('خودرو')">
+      🚗 خودرو
+    </span>
+
+    <span class="category" onclick="selectCategory('لوازم منزل')">
+      🏠 لوازم منزل
+    </span>
+
+    <span class="category" onclick="selectCategory('پوشاک')">
+      👕 پوشاک
+    </span>
+
+  </div>
+
+  <div id="message">
+    نسخه آزمایشی رسالت‌فی
+  </div>
+
+</div>
+
+<script>
+
+  function showMessage(name) {
+    document.getElementById("message").innerText =
+      "بخش «" + name + "» در مرحله بعد فعال می‌شود.";
+  }
+
+  function selectCategory(name) {
+    document.getElementById("search").value = name;
+
+    document.getElementById("message").innerText =
+      "دسته «" + name + "» انتخاب شد.";
+  }
+
+  // آماده‌سازی Mini App بله
+  if (window.Bale && Bale.WebApp) {
+    Bale.WebApp.ready();
+  }
+
+</script>
+
+</body>
+</html>
